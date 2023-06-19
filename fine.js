@@ -11,16 +11,17 @@ const openai = new OpenAIApi(configuration);
 async function uploadFile() {
   try {
     const f = await openai.createFile(
-      fs.createReadStream("newdata.jsonl"),
+      fs.createReadStream("yoga.jsonl"),
       "fine-tune"
     );
     console.log(`File ID ${f.data.id}`);
     return f.data.id;
   } catch (err) {
     console.log("err uploadfile: ", err);
+    // console.log("error-------------------------------error");
   }
 }
-uploadFile();
+// uploadFile();
 
 //run this 2nd, wait a bit, then comment out func call and move on
 async function makeFineTune() {
@@ -51,6 +52,19 @@ async function getFineTunedModelName() {
   }
 }
 // getFineTunedModelName();
+
+async function getFineTunedEventModelName() {
+  try {
+    const modelName = await openai.listFineTuneEvents(
+      "ft-Vd3yKZJKdiQK7cTdpBJBBFRa",
+      true
+    );
+    console.log(modelName.data);
+  } catch (err) {
+    console.log("err getmod: ", err);
+  }
+}
+// getFineTunedEventModelName();
 
 async function retrieveFineTuneData() {
   try {
