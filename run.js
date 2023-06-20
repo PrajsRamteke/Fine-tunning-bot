@@ -24,7 +24,7 @@ async function uploadFile() {
 async function makeFineTune() {
   try {
     const response = await openai.createFineTune({
-      training_file: "file-AeCeZAbo7w582IrXTcFed5Um",
+      training_file: "file-rUufT4PqAto8FveE2GGXmBi4",
       model: "davinci",
     });
     console.log(response.data);
@@ -80,8 +80,8 @@ async function retrieveFineTuneData() {
 async function run() {
   try {
     const response = await openai.createCompletion({
-      model: "davinci:ft-vanmla-2023-06-19-05-38-52",
-      prompt: "What is Prajwal Ramteke's favorite part of coding?",
+      model: "davinci:ft-personal-2023-06-20-06-08-03",
+      prompt: "How to refer",
       max_tokens: 100,
       n: 1,
     });
@@ -93,4 +93,4 @@ async function run() {
   }
 }
 
-// run();
+run();
